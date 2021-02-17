@@ -7,8 +7,13 @@ import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 import ChatIcon from '@material-ui/icons/Chat';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import HeaderOption from './HeaderOption';
+import { auth } from '../../firebase';
 
 function Header() {
+    
+    const logoutOfApp = () => {
+        auth.signOut();
+    }
     return (
         <div className="header">
             <div className="header__left">
@@ -25,8 +30,9 @@ function Header() {
                 <HeaderOption Icon={ChatIcon} title="Messaging" />
                 <HeaderOption Icon={NotificationsIcon} title="Notification" />
                 <HeaderOption
-                avatar={true}
-                title="me"
+                    avatar={true}
+                    title="me"
+                    onClick={logoutOfApp}
                 />
             </div>
         </div>
